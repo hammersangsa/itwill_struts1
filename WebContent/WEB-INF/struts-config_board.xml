@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 재사용성을 가지는 복사본 -->
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="boardForm" type="com.board.BoardForm"/>
+	</form-beans>
+
+	<action-mappings>
+		<action path="/bbs" type="com.board.BoardAction" name="boardForm"
+		scope="request" parameter="method">
+			<forward name="created" path="/board/created.jsp"/>			
+			<forward name="created_ok" redirect="true" 
+			path="/bbs.do?method=list"/>
+			<forward name="list" path="/board/list.jsp"/>			
+			<forward name="article" path="/board/article.jsp"/>
+			<forward name="deleted" redirect="true" 
+			path="/bbs.do?method=list"/>
+		</action>
+	
+	</action-mappings>
+
+</struts-config>

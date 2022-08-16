@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 재사용성을 가지는 복사본 -->
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="testForm" type="com.test.TestForm"/>
+	</form-beans>
+	<!-- 데이터를 담는 객체를 생성(model) -->
+	<action-mappings>
+		<action path="/write" forward="/test/write.jsp"/>
+		<action path="/write_ok" type="com.test.TestAction"
+			name="testForm" scope="request">
+			<forward name="ok" path="/test/write_ok.jsp"/>
+			<forward name="error" path="/test/error.jsp"/>
+		</action>
+	</action-mappings>
+	<!-- 매핑했던 데이터가 다시 여기로 옴 -->
+</struts-config>
